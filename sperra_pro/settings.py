@@ -11,12 +11,13 @@ ALLOWED_HOSTS = [
     "sperra.onrender.com",
     "sperraayurveda.com",
     "www.sperraayurveda.com",
+    "*",
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://sperra.onrender.com",
     "https://sperraayurveda.com",
     "https://www.sperraayurveda.com",
-    "*",
+    
 ]
 
 INSTALLED_APPS = [
