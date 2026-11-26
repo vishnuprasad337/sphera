@@ -5,18 +5,18 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "change-me-locally")
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "sperra.onrender.com",
     "sperraayurveda.com",
     "www.sperraayurveda.com",
-    "*"
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://sperra.onrender.com",
     "https://sperraayurveda.com",
     "https://www.sperraayurveda.com",
+    "*",
 ]
 
 INSTALLED_APPS = [
@@ -59,13 +59,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "sperra_pro.wsgi.application"
 
+import dj_database_url  # at the top with the other imports
+
 DATABASES = {
     "default": dj_database_url.parse(
-        os.environ["DATABASE_URL"],
+        "postgresql://sphera_user:npg_CPAQIh2L8SwZ@ep-snowy-rain-bi16racw-pooler.c-5.ap-southeast-1.aws.neon.tech/sphera?sslmode=require",
         conn_max_age=600,
         conn_health_checks=True,
     )
 }
+
 
 STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
